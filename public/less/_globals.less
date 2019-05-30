@@ -1,0 +1,67 @@
+@1em : 15px;
+.active {background:@blue !important; border:5px solid green;}
+body {
+  margin: 0;
+  padding: 0;
+  font-size:@1em;
+  line-height:1.2;
+  font-family: 'Courier', sans-serif !important;
+  color: @mainText;
+  background-color:@lightGray !important;
+
+}
+
+.App {background:@lightGray;}
+
+header {
+  background:white !important;
+  padding:2em 0 1.5em 0;
+
+  h4,a {
+    font-size:2em;
+  }
+  li {
+    a {
+      color:@mainText !important;
+      &:hover {
+        text-decoration: none;
+        color:@blue !important;
+      }
+    }
+    &:after {
+      content:'•';
+      padding:3em;
+      color:@blue;
+      font-size:1.5em;
+    }
+  }
+  li:last-child:after {
+    content:'';
+    padding:0;
+  }
+}
+
+section {
+  background:@lightGray;
+  padding-top:2em;
+  h1 {
+    margin:1em;
+  }
+}
+
+footer {
+  border-top:1px solid @red;
+  margin-top:@1em*2;
+  padding-top:@1em*2;
+  background:@lightGray;
+  color:@mainText;
+}
+
+a, a:link, a:visited {
+  color:@blue;
+}
+
+hr {
+  border:none;
+  border-bottom:1px solid @red;
+}
