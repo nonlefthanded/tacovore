@@ -12,11 +12,12 @@ import {
   BrowserRouter as Router,
   Route,
   Link,
+  NavLink
   // Switch,
   // Redirect
 } from 'react-router-dom'
 
-
+let match;
 class App extends Component {
 
   componentDidMount() {
@@ -45,7 +46,7 @@ class App extends Component {
     console.log(this.state);
     const active = {"EUG":"","PDX":"","COR":""};
 
-    // if (!match) {} else {};
+    if (!match) {console.log('yep')} else {console.log('nope')};
     return (
       <Router>
         <div className="App">
@@ -54,17 +55,16 @@ class App extends Component {
             <div className="row">
             <div className="col-lg-12 text-center">
               <h4>{this.state.data.tagline.header}</h4>
-              <ul className="list-inline">
-                <li className="list-inline-item"><Link className={active.EUG} to="/eugene"   >Eugene</Link></li>
-                <li className="list-inline-item"><Link className={active.PDX} to="/portland" >Portland</Link></li>
-                <li className="list-inline-item"><Link className={active.COR} to="/corvallis">Corvallis</Link></li>
+              <ul id="" className="list-inline mainNav">
+                <li className="list-inline-item"><NavLink to="/eugene"   >Eugene</NavLink></li>
+                <li className="list-inline-item"><NavLink to="/portland" >Portland</NavLink></li>
+                <li className="list-inline-item"><NavLink to="/corvallis">Corvallis</NavLink></li>
               </ul>
             </div>
             </div>
             </div>
           </header>
           <section className="text-center">
-            <h1><Link to="/"><img alt="Tacovore Logo" src={this.state.data.logo} /></Link></h1>
             <h2>{parse(this.state.data.tagline.body)}</h2>
             <Route exact={true} path="/" component={Home} />
             <Route exact={true} path="/:location" component={Location} />

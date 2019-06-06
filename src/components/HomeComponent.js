@@ -2,7 +2,7 @@ import React from 'react';
 const Home = () => {
     return (
         <div className="jumbotron">
-            <h1 className="display-3">Landing page</h1>
+            <img src="http://www.tacovorepnw.com/images/tacovore_logo_small.png" />
         </div>
     );
 }

@@ -13,7 +13,7 @@ const Location = (match) => {
     console.log(_);
     // console.log(match.match.params.location);
     return (
-        <div className="container">
+        <div className="container location">
           <div className="row">
             <div className="col-lg-12 text-center">
             <h1>{_.name}</h1>
@@ -28,13 +28,13 @@ const Location = (match) => {
 
             <p>
               <a href={_.links.facebook}>
-                <span className="fa-stack fa-1x">
+                <span className="fa-stack fa-2x">
                   <i className="fas fa-circle fa-stack-2x"></i>
                   <i className="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
                 </span>
               </a>
               <a href={_.links.instagram}>
-                <span className="fa-stack fa-1x">
+                <span className="fa-stack fa-2x">
                   <i className="fas fa-circle fa-stack-2x"></i>
                   <i className="fab fa-instagram fa-stack-1x fa-inverse"></i>
                 </span>
