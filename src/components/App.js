@@ -20,6 +20,7 @@ import {
 class App extends Component {
 
   componentDidMount() {
+    console.log('component_Did_Mount');
     return new Promise((resolve,reject)=>{
       fetch("./Data.js").then((res) => res.json()).then((Data) => {
 
@@ -34,7 +35,12 @@ class App extends Component {
     });
   }
 
+  componentDidUpdate() {
+    console.log("component_Did_Update");
+  }
+
   render() {
+
     if (!this.state) return false;
     console.log(this.state);
     const active = {"EUG":"","PDX":"","COR":""};
@@ -61,7 +67,7 @@ class App extends Component {
             <h1><Link to="/"><img alt="Tacovore Logo" src={this.state.data.logo} /></Link></h1>
             <h2>{parse(this.state.data.tagline.body)}</h2>
             <Route exact={true} path="/" component={Home} />
-            <Route path="/:location" component={Location} />
+            <Route exact={true} path="/:location" component={Location} />
           </section>
           <footer>
             <div className="container">

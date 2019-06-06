@@ -7,7 +7,6 @@ const Location = (match) => {
     if (!locationData[0]) return false;
 
     let _ = locationData[0].locations[match.match.params.location];
-
     _.links.email = "mailto:" + _.email;
     _.links.phone   = "tel:" + _.phone.replace(/[^0-9]/g, '');
     _.links.map = "https://maps.google.com/?q=Tacovore%20" + _.address.replace(/ /g,'%20') + '%20' + _.city + '%20' + _.state + '%20' + _.zip;
