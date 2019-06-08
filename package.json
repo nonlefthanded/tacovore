@@ -18,6 +18,5 @@
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.8.2"
-  },
-  "homepage": "http://nonlefthanded.com/experiments/tacovore"
+  }
 }

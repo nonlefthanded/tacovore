@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import { setGlobal } from 'reactn';
 import parse from 'html-react-parser';
 
 import '../styles/App.css';
@@ -11,9 +10,8 @@ import Location from './LocationComponent';
 import {
   BrowserRouter as Router,
   Route,
-  Link,
-  NavLink
-  // Switch,
+  NavLink,
+  Switch
   // Redirect
 } from 'react-router-dom'
 
@@ -21,32 +19,23 @@ let match;
 class App extends Component {
 
   componentDidMount() {
-    console.log('component_Did_Mount');
     return new Promise((resolve,reject)=>{
       fetch("./Data.js").then((res) => res.json()).then((Data) => {
-
-        // console.log(Data);
         Data.thisYear = new Date().getFullYear();
         this.setState({
             data: Data
         });
-        setGlobal({ data: Data });
-        // console.log('something');
       })
     });
   }
 
-  componentDidUpdate() {
-    console.log("component_Did_Update");
-  }
 
   render() {
 
     if (!this.state) return false;
-    console.log(this.state);
-    const active = {"EUG":"","PDX":"","COR":""};
+    // console.log(this.state);
 
-    if (!match) {console.log('yep')} else {console.log('nope')};
+    if (!match) {};
     return (
       <Router>
         <div className="App">
@@ -56,9 +45,9 @@ class App extends Component {
             <div className="col-lg-12 text-center">
               <h4>{this.state.data.tagline.header}</h4>
               <ul id="" className="list-inline mainNav">
-                <li className="list-inline-item"><NavLink to="/eugene"   >Eugene</NavLink></li>
-                <li className="list-inline-item"><NavLink to="/portland" >Portland</NavLink></li>
-                <li className="list-inline-item"><NavLink to="/corvallis">Corvallis</NavLink></li>
+                <li className="list-inline-item"><NavLink state="4" to={{ pathname:"/eugene" ,pass: 'some data' }}  >Eugene</NavLink></li>
+                <li className="list-inline-item"><NavLink to="/portland" sups="hello" >Portland</NavLink></li>
+                <li className="list-inline-item"><NavLink to="/corvallis" sups="hello">Corvallis</NavLink></li>
               </ul>
             </div>
             </div>
@@ -66,8 +55,10 @@ class App extends Component {
           </header>
           <section className="text-center">
             <h2>{parse(this.state.data.tagline.body)}</h2>
+            <Switch>
             <Route exact={true} path="/" component={Home} />
-            <Route exact={true} path="/:location" component={Location} />
+            <Route path="/:location" render={(props)=><Location props={props} data={this.state.data}/>} />
+            </Switch>
           </section>
           <footer>
             <div className="container">

@@ -1,17 +1,16 @@
 import React from 'react';
-import { useGlobal } from 'reactn';
 import parse from 'html-react-parser';
 
-const Location = (match) => {
-    const locationData = useGlobal('data');
-    if (!locationData[0]) return false;
+const Location = (allData) => {
+    // console.log(allData);
 
-    let _ = locationData[0].locations[match.match.params.location];
+    let _ = allData.data.locations[allData.props.match.params.location];
     _.links.email = "mailto:" + _.email;
     _.links.phone   = "tel:" + _.phone.replace(/[^0-9]/g, '');
     _.links.map = "https://maps.google.com/?q=Tacovore%20" + _.address.replace(/ /g,'%20') + '%20' + _.city + '%20' + _.state + '%20' + _.zip;
-    console.log(_);
-    // console.log(match.match.params.location);
+
+    // console.log(_);
+
     return (
         <div className="container location">
           <div className="row">
@@ -47,4 +46,5 @@ const Location = (match) => {
         </div>
     );
 }
+
 export default Location;
